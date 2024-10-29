@@ -1,8 +1,12 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController as AuthLoginController;
+use Illuminate\Foundation\Auth\RegistersUsers;
+
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\SupplierController;
+
 use Illuminate\Support\Facades\Route;
 
 
@@ -12,8 +16,12 @@ use Illuminate\Support\Facades\Route;
 // });
 
 //LOGIN
-Route::get('/login', [LoginController::class, 'login'])->name('/login');
-Route::get('register', [LoginController::class, 'register'])->name('/register');
+Route::get('/i', [IndexController::class, 'i'])->name('/i');
+
+Route::get('/login', [AuthLoginController::class, 'showLoginForm'])->name('/login');
+Route::get('register', [RegistersUsers::class, 'showRegistrationForm'])->name('/register');
+
+
 
 
 
@@ -29,3 +37,7 @@ Route::post('/supplier/store', [SupplierController::class, 'store'])->name('supp
 Route::post('/supplier/delete/{id}', [SupplierController::class, 'delete'])->name('supplier.delete');
 Route::get('/supplier/edit', [SupplierController::class, 'edit'])->name('admin.supplier.edit');
 Route::get('/supplier/update', [SupplierController::class, 'update'])->name('admin.supplier.update');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

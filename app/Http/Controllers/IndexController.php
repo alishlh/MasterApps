@@ -10,4 +10,9 @@ class IndexController extends Controller
     {
         return view('index');
     }
+
+    function i()
+    {
+        return view('login');
+    }
 }
