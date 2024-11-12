@@ -7,6 +7,9 @@
   <title>SeoDash Free Bootstrap Admin Template by Adminmart</title>
   <link rel="shortcut icon" type="image/png" href="../assets/images/logos/seodashlogo.png" />
   <link rel="stylesheet" href="../assets/css/styles.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/@tabler/core@1.0.0-beta17/dist/libs/apexcharts/dist/apexcharts.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tabler/core@1.0.0-beta17/dist/libs/apexcharts/dist/apexcharts.min.js" defer></script>
+
 </head>
 
 <body>
@@ -14,7 +17,20 @@
   <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
     data-sidebar-position="fixed" data-header-position="fixed">
     <!-- Sidebar Start -->
+    @if(Auth::user()->role == 'admin')
+
     @include('navigation.sidebar')
+
+    @elseif(Auth::user()->role == 'supplier')
+
+    @include('navigation.sidebar-supplier')
+
+    @else
+
+    @include('navigation.sidebar-pegawai')
+
+    @endif
+
     <!--  Sidebar End -->
     <!--  Main wrapper -->
     <div class="body-wrapper">

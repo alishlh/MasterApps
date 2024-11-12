@@ -17,7 +17,7 @@
             <span class="hide-menu">Mall</span>
           </li>
           <li class="sidebar-item">
-            <a class="sidebar-link" href="{{route('index')}}" aria-expanded="false">
+            <a class="sidebar-link" href="{{route('admin.index')}}" aria-expanded="false">
               <span>
                 <iconify-icon icon="solar:home-smile-bold-duotone" class="fs-6"></iconify-icon>
               </span>
@@ -28,8 +28,8 @@
             <i class="ti ti-dots nav-small-cap-icon fs-6"></i>
             <span class="hide-menu">Data</span>
           </li>
-          <li class="sidebar-item">
-            <a class="sidebar-link" href="./ui-typography.html" aria-expanded="false">
+          <li class="sidebar-item has-sub">
+            <a class="sidebar-link" href="{{route('users')}}" aria-expanded="false">
               <span>
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="icon icon-tabler icons-tabler-filled icon-tabler-user">
                   <path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -40,32 +40,25 @@
               <span class="hide-menu">Users</span>
             </a>
           </li>
-          <li class="sidebar-item">
-            <a class="sidebar-link" href="./ui-buttons.html" aria-expanded="false">
+          <li class="sidebar-item {{ request()->routeIs('admin.pegawai.pegawai') }}">
+            <a class="sidebar-link" href="{{route('admin.pegawai.pegawai')}}" aria-expanded="false">
               <span>
                 <iconify-icon icon="solar:layers-minimalistic-bold-duotone" class="fs-6"></iconify-icon>
               </span>
               <span class="hide-menu">Pegawai</span>
             </a>
           </li>
-          <li class="sidebar-item">
-            <a class="sidebar-link" href="{{route('supplier')}}" aria-expanded="false">
+          <li class="sidebar-item {{ request()->routeIs('users.supplier') ? 'active' : '' }} ">
+            <a class="sidebar-link" href="{{route('users.supplier')}}" aria-expanded="false">
               <span>
                 <iconify-icon icon="solar:danger-circle-bold-duotone" class="fs-6"></iconify-icon>
               </span>
               <span class="hide-menu">Supplier</span>
             </a>
           </li>
+          
           <li class="sidebar-item">
-            <a class="sidebar-link" href="./ui-card.html" aria-expanded="false">
-              <span>
-                <iconify-icon icon="solar:bookmark-square-minimalistic-bold-duotone" class="fs-6"></iconify-icon>
-              </span>
-              <span class="hide-menu">Pembeli</span>
-            </a>
-          </li>
-          <li class="sidebar-item">
-            <a class="sidebar-link" href="./ui-forms.html" aria-expanded="false">
+            <a class="sidebar-link" href="{{route('admin.transaksi')}}" aria-expanded="false">
               <span>
                 <iconify-icon icon="solar:file-text-bold-duotone" class="fs-6"></iconify-icon>
               </span>
@@ -77,7 +70,7 @@
             <span class="hide-menu">Barang</span>
           </li>
           <li class="sidebar-item">
-            <a class="sidebar-link" href="./authentication-login.html" aria-expanded="false">
+            <a class="sidebar-link" href="{{route('admin.barang.index')}}" aria-expanded="false">
               <span>
                 <iconify-icon icon="solar:login-3-bold-duotone" class="fs-6"></iconify-icon>
               </span>
@@ -85,7 +78,7 @@
             </a>
           </li>
           <li class="sidebar-item">
-            <a class="sidebar-link" href="./authentication-register.html" aria-expanded="false">
+            <a class="sidebar-link" href="{{route('admin.barangMasuk.index')}}" aria-expanded="false">
               <span>
                 <iconify-icon icon="solar:user-plus-rounded-bold-duotone" class="fs-6"></iconify-icon>
               </span>

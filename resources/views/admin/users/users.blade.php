@@ -1,39 +1,42 @@
 @extends('layout.master-admin')
 @section('content')
-
-
-
 <div class="container-fluid">
     <div class="card">
       <div class="card-body">
-        <h5 class="card-title text-center mb-3">Form Data Supplier</h5>
-
+        <h5 class="card-title">Form Data Users</h5>
         <div class="table-responsive">
+          <button class="btn btn-primary m-1" type="button"><a class="text-white " href="{{route('admin.users.create')}}">Create</a></button>
           <table class="table text-nowrap align-middle mb-0">
             <thead>
                 <tr>
-                  <th>No.</th>
-                  <th>Img</th>
-                  <th>Name</th>
-                  <th>email</th>
-                  <th>alamat</th>
-                  <th>Telp</th>
-                  <th>Action</th>
+                    <th>No.</th>
+                    <th>Name</th>
+                    <th>email</th>
+                    <th>Img</th>
+                    <th>Role</th>
+                    <th>alamat</th>
+                    <th>Telp</th>
+                    <th>Tanggal Lahir</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
-               @foreach ($data as $value)
-                  <tr>
+                @foreach ($data as $value)
+                <tr>
                     <td>{{$loop->iteration}}</td>
-                    <td>tyui</td>
                     <td>{{$value->name}}</td>
                     <td>{{$value->email}}</td>
+                    <td>tyui</td>
+                    <td>{{$value->role}}</td>
                     <td>{{$value->alamat}}</td>
                     <td>{{$value->telp}}</td>
+                    <td>{{$value->tgl_lahir}}</td>
                     <td>
-                      
-                  </tr>                   
-               @endforeach
+                      <button class="btn btn-warning" href="">Edit</button>
+                      <button class="btn btn-danger" href="{{route('admin.users.delete',$value->id)}}">Delete</button>
+                    </td>
+                </tr>
+              @endforeach
             </tbody>
           </table>
         </div>
@@ -45,8 +48,4 @@
           class="pe-1 text-primary text-decoration-underline">ThemeWagon</a></p>
     </div>
 </div>
-
-
-
 @endsection
-

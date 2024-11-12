@@ -6,31 +6,37 @@
 <div class="container-fluid">
     <div class="card">
       <div class="card-body">
-        <h5 class="card-title text-center mb-3">Form Data Supplier</h5>
-
+        <h5 class="card-title text-center mb-3">Form Transaksi</h5>
+        <a href="{{route('admin.transaksi.create')}}" class="btn btn-primary">+</a>
         <div class="table-responsive">
           <table class="table text-nowrap align-middle mb-0">
             <thead>
                 <tr>
-                  <th>No.</th>
-                  <th>Img</th>
-                  <th>Name</th>
-                  <th>email</th>
-                  <th>alamat</th>
-                  <th>Telp</th>
+                  <th>Kode Transaksi</th>
+                  <th>Tanggal</th>
+                  <th>kode Barang</th>
+                  <th>Barang</th>
+                  <th>Jumlah</th>
+                  <th>Satuan</th>
+                  <th>Harga</th>
+                  <th>Total</th>
                   <th>Action</th>
                 </tr>
             </thead>
             <tbody>
                @foreach ($data as $value)
                   <tr>
-                    <td>{{$loop->iteration}}</td>
-                    <td>tyui</td>
-                    <td>{{$value->name}}</td>
-                    <td>{{$value->email}}</td>
-                    <td>{{$value->alamat}}</td>
-                    <td>{{$value->telp}}</td>
+                    <td>{{$value->kode}}</td>
+                    <td>{{$value->tgl_transaksi}}</td>
+                    <td>{{$value->barang_id}}</td>
+                    <td>{{$value->barang->name}}</td>
+                    <td>{{$value->jumlah}}</td>
+                    <td>{{$value->barang->satuan}}</td>
+                    <td>{{$value->barang->harga_jual}}</td>
+                    <td>{{$value->total_harga}}</td>
                     <td>
+                        <a href="">detail</a>
+                    </td>
                       
                   </tr>                   
                @endforeach
@@ -46,7 +52,4 @@
     </div>
 </div>
 
-
-
 @endsection
-

@@ -1,13 +1,10 @@
 @extends('layout.master-admin')
 @section('content')
 
-
-
 <div class="container-fluid">
     <div class="card">
       <div class="card-body">
         <h5 class="card-title text-center mb-3">Form Data Supplier</h5>
-
         <div class="table-responsive">
           <table class="table text-nowrap align-middle mb-0">
             <thead>
@@ -18,6 +15,7 @@
                   <th>email</th>
                   <th>alamat</th>
                   <th>Telp</th>
+                  <th>Status</th>
                   <th>Action</th>
                 </tr>
             </thead>
@@ -30,6 +28,9 @@
                     <td>{{$value->email}}</td>
                     <td>{{$value->alamat}}</td>
                     <td>{{$value->telp}}</td>
+                    <td>
+                      {{$value->status}}
+                    </td>
                     <td>
                       
                   </tr>                   
@@ -45,8 +46,5 @@
           class="pe-1 text-primary text-decoration-underline">ThemeWagon</a></p>
     </div>
 </div>
-
-
-
 @endsection
 
