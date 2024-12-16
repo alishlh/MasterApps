@@ -12,11 +12,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('img')->nullable()->after('password');
+            $table->string('img')->nullable()->nullable()->after('password');
             $table->enum('role', ['admin', 'supplier', 'pegawai'])->nullable()->after('img');
             $table->string('alamat')->nullable()->after('role');
-            $table->string('telp')->nullable()->after('alamat');
-            $table->date('tgl_lahir')->after('telp');
+            $table->integer('telp')->nullable()->after('alamat');
+            $table->date('tgl_lahir')->nullable()->after('telp');
+            $table->enum('status', ['non-aktif', 'aktif'])->nullable()->after('tgl_lahir');
         });
     }
 
@@ -31,6 +32,7 @@ return new class extends Migration
             $table->dropColumn('alamat');
             $table->dropColumn('telp');
             $table->dropColumn('tgl_lahir');
+            $table->dropColumn('status');
         });
     }
 };

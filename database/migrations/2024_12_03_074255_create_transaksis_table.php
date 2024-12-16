@@ -11,13 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('transaksi', function (Blueprint $table) {
-            $table->increments('kode')->unsigned()->autoIncrement();
+        Schema::create('transaksis', function (Blueprint $table) {
+            $table->increments('id');
             $table->integer('barang_id')->unsigned();
             $table->foreign('barang_id')->on('barangs')->references('id')->onDelete('cascade');
-            $table->date('tgl_transaksi');
             $table->integer('jumlah');
-            $table->integer('total_harga');
+            $table->integer('total');
             $table->timestamps();
         });
     }
@@ -27,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('transaksi');
+        Schema::dropIfExists('transaksis');
     }
 };

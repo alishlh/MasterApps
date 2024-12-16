@@ -1,276 +1,85 @@
 @extends('layout.master-admin')
+
 @section('content')
+<div class="container-fluid d-flex gap-2">
+<div class="card col-md-6">
+    <div class="card-body">
+        <h3>All Users</h3>
+        <h3>5</h3>
+    </div>
+</div>
+<div class="card col-md-6">
+    <div class="card-body">
+
+        <h3>Supplier</h3>
+        <div class="d-flex gap-3">
+
+        
+        <div class="bg-primary rounded px-2 py-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-user">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" />
+                <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+              </svg>
+        </div>
+        <h1>10</h1>
+    </div>
+    </div>
+</div>
+</div>
 <div class="container-fluid">
-  <div class="row">
-    <div class="col-lg-12">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title d-flex align-items-center gap-2 mb-4">
-            Traffic Overview
-            <span>
-              <iconify-icon icon="solar:question-circle-bold" class="fs-7 d-flex text-muted" data-bs-toggle="tooltip"
-                data-bs-placement="top" data-bs-custom-class="tooltip-success"
-                data-bs-title="Traffic Overview"></iconify-icon>
-            </span>
-          </h5>
-          <div id="traffic-overview">
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-4">
-      <div class="card">
-        <div class="card-body text-center">
-          <img src="../assets/images/backgrounds/product-tip.png" alt="image" class="img-fluid" width="205">
-          <h4 class="mt-7">Productivity Tips!</h4>
-          <p class="card-subtitle mt-2 mb-3">Duis at orci justo nulla in libero id leo
-            molestie sodales phasellus justo.</p>
-          <button class="btn btn-primary mb-3">View All Tips</button>
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-8">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">View by page title and screen class</h5>
-          <div class="table-responsive">
-            <table class="table text-nowrap align-middle mb-0">
-              <thead>
-                <tr class="border-2 border-bottom border-primary border-0">
-                  <th scope="col" class="ps-0">Page Title</th>
-                  <th scope="col">Link</th>
-                  <th scope="col" class="text-center">Pageviews</th>
-                  <th scope="col" class="text-center">Page Value</th>
-                </tr>
-              </thead>
-              <tbody class="table-group-divider">
-                <tr>
-                  <th scope="row" class="ps-0 fw-medium">
-                    <span class="table-link1 text-truncate d-block">Welcome to our
-                      website</span>
-                  </th>
-                  <td>
-                    <a href="javascript:void(0)" class="link-primary text-dark fw-medium d-block">/index.html</a>
-                  </td>
-                  <td class="text-center fw-medium">18,456</td>
-                  <td class="text-center fw-medium">$2.40</td>
-                </tr>
-                <tr>
-                  <th scope="row" class="ps-0 fw-medium">
-                    <span class="table-link1 text-truncate d-block">Modern Admin
-                      Dashboard Template</span>
-                  </th>
-                  <td>
-                    <a href="javascript:void(0)" class="link-primary text-dark fw-medium d-block">/dashboard</a>
-                  </td>
-                  <td class="text-center fw-medium">17,452</td>
-                  <td class="text-center fw-medium">$0.97</td>
-                </tr>
-                <tr>
-                  <th scope="row" class="ps-0 fw-medium">
-                    <span class="table-link1 text-truncate d-block">Explore our
-                      product catalog</span>
-                  </th>
-                  <td>
-                    <a href="javascript:void(0)" class="link-primary text-dark fw-medium d-block">/product-checkout</a>
-                  </td>
-                  <td class="text-center fw-medium">12,180</td>
-                  <td class="text-center fw-medium">$7,50</td>
-                </tr>
-                <tr>
-                  <th scope="row" class="ps-0 fw-medium">
-                    <span class="table-link1 text-truncate d-block">Comprehensive
-                      User Guide</span>
-                  </th>
-                  <td>
-                    <a href="javascript:void(0)" class="link-primary text-dark fw-medium d-block">/docs</a>
-                  </td>
-                  <td class="text-center fw-medium">800</td>
-                  <td class="text-center fw-medium">$5,50</td>
-                </tr>
-                <tr>
-                  <th scope="row" class="ps-0 fw-medium border-0">
-                    <span class="table-link1 text-truncate d-block">Check out our
-                      services</span>
-                  </th>
-                  <td class="border-0">
-                    <a href="javascript:void(0)" class="link-primary text-dark fw-medium d-block">/services</a>
-                  </td>
-                  <td class="text-center fw-medium border-0">1300</td>
-                  <td class="text-center fw-medium border-0">$2,15</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-4">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title d-flex align-items-center gap-2 mb-5 pb-3">Sessions by
-            device<span><iconify-icon icon="solar:question-circle-bold" class="fs-7 d-flex text-muted"
-                data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="tooltip-success"
-                data-bs-title="Locations"></iconify-icon></span>
-          </h5>
-          <div class="row">
-            <div class="col-4">
-              <iconify-icon icon="solar:laptop-minimalistic-line-duotone"
-                class="fs-7 d-flex text-primary"></iconify-icon>
-              <span class="fs-11 mt-2 d-block text-nowrap">Computers</span>
-              <h4 class="mb-0 mt-1">87%</h4>
-            </div>
-            <div class="col-4">
-              <iconify-icon icon="solar:smartphone-line-duotone" class="fs-7 d-flex text-secondary"></iconify-icon>
-              <span class="fs-11 mt-2 d-block text-nowrap">Smartphone</span>
-              <h4 class="mb-0 mt-1">9.2%</h4>
-            </div>
-            <div class="col-4">
-              <iconify-icon icon="solar:tablet-line-duotone" class="fs-7 d-flex text-success"></iconify-icon>
-              <span class="fs-11 mt-2 d-block text-nowrap">Tablets</span>
-              <h4 class="mb-0 mt-1">3.1%</h4>
-            </div>
-          </div>
-
-          <div class="vstack gap-4 mt-7 pt-2">
-            <div>
-              <div class="hstack justify-content-between">
-                <span class="fs-3 fw-medium">Computers</span>
-                <h6 class="fs-3 fw-medium text-dark lh-base mb-0">87%</h6>
-              </div>
-              <div class="progress mt-6" role="progressbar" aria-label="Warning example" aria-valuenow="75"
-                aria-valuemin="0" aria-valuemax="100">
-                <div class="progress-bar bg-primary" style="width: 100%"></div>
+    <div class="card">
+      <div class="card-body">
+        <div class="container mt-5">
+            <h2 class="text-center">Pie Chart Bootstrap dengan Chart.js</h2>
+            <div class="row justify-content-center">
+              <div class="col-md-6">
+                <!-- Canvas untuk Pie Chart -->
+                <canvas id="myPieChart"></canvas>
               </div>
             </div>
-
-            <div>
-              <div class="hstack justify-content-between">
-                <span class="fs-3 fw-medium">Smartphones</span>
-                <h6 class="fs-3 fw-medium text-dark lh-base mb-0">9.2%</h6>
-              </div>
-              <div class="progress mt-6" role="progressbar" aria-label="Warning example" aria-valuenow="75"
-                aria-valuemin="0" aria-valuemax="100">
-                <div class="progress-bar bg-secondary" style="width: 50%"></div>
-              </div>
-            </div>
-
-            <div>
-              <div class="hstack justify-content-between">
-                <span class="fs-3 fw-medium">Tablets</span>
-                <h6 class="fs-3 fw-medium text-dark lh-base mb-0">3.1%</h6>
-              </div>
-              <div class="progress mt-6" role="progressbar" aria-label="Warning example" aria-valuenow="75"
-                aria-valuemin="0" aria-valuemax="100">
-                <div class="progress-bar bg-success" style="width: 35%"></div>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-4">
-      <div class="card overflow-hidden hover-img">
-        <div class="position-relative">
-          <a href="javascript:void(0)">
-            <img src="../assets/images/blog/blog-img1.jpg" class="card-img-top" alt="matdash-img">
-          </a>
-          <span
-            class="badge text-bg-light text-dark fs-2 lh-sm mb-9 me-9 py-1 px-2 fw-semibold position-absolute bottom-0 end-0">2
-            min Read</span>
-          <img src="../assets/images/profile/user-3.jpg" alt="matdash-img"
-            class="img-fluid rounded-circle position-absolute bottom-0 start-0 mb-n9 ms-9" width="40" height="40"
-            data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Georgeanna Ramero">
-        </div>
-        <div class="card-body p-4">
-          <span class="badge text-bg-light fs-2 py-1 px-2 lh-sm  mt-3">Social</span>
-          <a class="d-block my-4 fs-5 text-dark fw-semibold link-primary" href="">As yen tumbles, gadget-loving
-            Japan goes
-            for secondhand iPhones</a>
-          <div class="d-flex align-items-center gap-4">
-            <div class="d-flex align-items-center gap-2">
-              <i class="ti ti-eye text-dark fs-5"></i>9,125
-            </div>
-            <div class="d-flex align-items-center gap-2">
-              <i class="ti ti-message-2 text-dark fs-5"></i>3
-            </div>
-            <div class="d-flex align-items-center fs-2 ms-auto">
-              <i class="ti ti-point text-dark"></i>Mon, Dec 19
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-4">
-      <div class="card overflow-hidden hover-img">
-        <div class="position-relative">
-          <a href="javascript:void(0)">
-            <img src="../assets/images/blog/blog-img2.jpg" class="card-img-top" alt="matdash-img">
-          </a>
-          <span
-            class="badge text-bg-light text-dark fs-2 lh-sm mb-9 me-9 py-1 px-2 fw-semibold position-absolute bottom-0 end-0">2
-            min Read</span>
-          <img src="../assets/images/profile/user-2.jpg" alt="matdash-img"
-            class="img-fluid rounded-circle position-absolute bottom-0 start-0 mb-n9 ms-9" width="40" height="40"
-            data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Georgeanna Ramero">
-        </div>
-        <div class="card-body p-4">
-          <span class="badge text-bg-light fs-2 py-1 px-2 lh-sm  mt-3">Gadget</span>
-          <a class="d-block my-4 fs-5 text-dark fw-semibold link-primary" href="">Intel loses bid to revive
-            antitrust case
-            against patent foe Fortress</a>
-          <div class="d-flex align-items-center gap-4">
-            <div class="d-flex align-items-center gap-2">
-              <i class="ti ti-eye text-dark fs-5"></i>4,150
-            </div>
-            <div class="d-flex align-items-center gap-2">
-              <i class="ti ti-message-2 text-dark fs-5"></i>38
-            </div>
-            <div class="d-flex align-items-center fs-2 ms-auto">
-              <i class="ti ti-point text-dark"></i>Sun, Dec 18
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-4">
-      <div class="card overflow-hidden hover-img">
-        <div class="position-relative">
-          <a href="javascript:void(0)">
-            <img src="../assets/images/blog/blog-img3.jpg" class="card-img-top" alt="matdash-img">
-          </a>
-          <span
-            class="badge text-bg-light text-dark fs-2 lh-sm mb-9 me-9 py-1 px-2 fw-semibold position-absolute bottom-0 end-0">2
-            min Read</span>
-          <img src="../assets/images/profile/user-3.jpg" alt="matdash-img"
-            class="img-fluid rounded-circle position-absolute bottom-0 start-0 mb-n9 ms-9" width="40" height="40"
-            data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Georgeanna Ramero">
-        </div>
-        <div class="card-body p-4">
-          <span class="badge text-bg-light fs-2 py-1 px-2 lh-sm  mt-3">Health</span>
-          <a class="d-block my-4 fs-5 text-dark fw-semibold link-primary" href="">COVID outbreak deepens as more
-            lockdowns
-            loom in China</a>
-          <div class="d-flex align-items-center gap-4">
-            <div class="d-flex align-items-center gap-2">
-              <i class="ti ti-eye text-dark fs-5"></i>9,480
-            </div>
-            <div class="d-flex align-items-center gap-2">
-              <i class="ti ti-message-2 text-dark fs-5"></i>12
-            </div>
-            <div class="d-flex align-items-center fs-2 ms-auto">
-              <i class="ti ti-point text-dark"></i>Sat, Dec 17
-            </div>
-          </div>
         </div>
       </div>
     </div>
     <div class="py-6 px-6 text-center">
       <p class="mb-0 fs-4">Design and Developed by <a href="https://adminmart.com/" target="_blank"
-          class="pe-1 text-primary text-decoration-underline">AdminMart.com</a>Distributed by <a
-          href="https://themewagon.com/" target="_blank"
+          class="pe-1 text-primary text-decoration-underline">AdminMart.com</a> Distributed by <a href="https://themewagon.com/" target="_blank"
           class="pe-1 text-primary text-decoration-underline">ThemeWagon</a></p>
     </div>
-  </div>
-  @endsection
+</div>
+@endsection
+
+@section('script')
+    <script>
+        // Script untuk menggambar Pie Chart menggunakan Chart.js
+        var ctx = document.getElementById('myPieChart').getContext('2d');
+        var myPieChart = new Chart(ctx, {
+          type: 'pie', // Jenis chart: pie chart
+          data: {
+            labels: ['Red', 'Blue', 'Yellow'], // Label untuk masing-masing bagian
+            datasets: [{
+              label: 'Pie Chart Example',
+              data: [300, 50, 100], // Nilai untuk masing-masing bagian
+              backgroundColor: ['#FF0000', '#0000FF', '#FFFF00'], // Warna masing-masing bagian
+              borderColor: ['#FF0000', '#0000FF', '#FFFF00'], // Warna border bagian
+              borderWidth: 1
+            }]
+          },
+          options: {
+            responsive: true, // Menyesuaikan ukuran chart dengan ukuran layar
+            plugins: {
+              legend: {
+                position: 'top', // Posisi legenda chart
+              },
+              tooltip: {
+                callbacks: {
+                  label: function(tooltipItem) {
+                    return tooltipItem.label + ': ' + tooltipItem.raw + ' units';
+                  }
+                }
+              }
+            }
+          }
+        });
+    </script>
+@endsection

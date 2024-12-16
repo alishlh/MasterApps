@@ -47,19 +47,40 @@ class BarangMasukController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function editSupplier($id)
     {
-        //
+        $titipan = BarangMasuk::findOrFail($id);
+        return view('supplier.edit', compact('titipan'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
-        //
-    }
+        // Validasi input
+        $validated = $request->validate([
+            'barang' => 'required',
+            'jumlah' => 'required|numeric|min:0',
+            'satuan' => 'required|string|max:255',
+            'total_harga' => 'required|max:255',
+        ]);
 
+        // Temukan barang berdasarkan ID
+        $titipan = BarangMasuk::find($id);
+        if (!$titipan) {
+            return redirect()->back()->with('status', 'Barang tidak ditemukan.');
+        }
+
+        // Perbarui data barang
+        $titipan->barang = $validated['barang'];
+        $titipan->jumlah = $validated['jumlah'];
+        $titipan->satuan = $validated['satuan'];
+        $titipan->total_harga = $validated['total_harga'];
+        $titipan->save();
+
+        return redirect()->route('admin.barang.index')->with('status', 'Barang berhasil diperbarui.');
+    }
     /**
      * Remove the specified resource from storage.
      */
@@ -79,6 +100,9 @@ class BarangMasukController extends Controller
     {
         return view('supplier.create');
     }
+
+
+
     function storeTitipan(Request $request)
     {
         $request->validate([
@@ -98,12 +122,30 @@ class BarangMasukController extends Controller
         $supplier->total_harga = $request->total_harga;
         $supplier->save();
 
-        return redirect()->route('supplier.data-titapan')->with('msg', 'Pengaduan berhasil dikirim');
+        return redirect()->route('supplier.data-titipan');
     }
 
     function detailTitipan($id)
     {
         $data = BarangMasuk::findlOrFail($id);
         return view('supplier.detail-supplier', compact('user'));
+    }
+
+    function deleteBarang($id)
+    {
+        $titipan = BarangMasuk::findOrFail($id);
+        $titipan->delete();
+        return redirect()->route('supplier.data-titipan');
+    }
+
+
+
+    //SUPPILER
+    function titipan()
+    {
+        $data = BarangMasuk::all();
+        return view('supplier.index', [
+            'data' => $data
+        ]);
     }
 }

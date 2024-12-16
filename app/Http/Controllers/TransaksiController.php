@@ -4,75 +4,72 @@ namespace App\Http\Controllers;
 
 use App\Models\Barang;
 use App\Models\Transaksi;
+use App\Models\TransaksiDetail;
+
 use Illuminate\Http\Request;
+
 
 
 
 class TransaksiController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+    function index()
     {
-        $data = Transaksi::all();
-        return view('admin.transaksi.index', [
-            'data' => $data
+        $transaksi = Transaksi::all();
+        return view('admin.transaksi.index', ['transaksi' => $transaksi]);
+    }
+    function create()
+    {
+        $barang = Barang::all();
+        return view('admin.transaksi.create', ['barang' => $barang]);
+    }
+    function store(Request $request)
+    {
+        $request->validate([
+            'barang_id' => 'required',
+            'jumlah' => 'required',
+            'total' => 'required'
         ]);
+
+        $transaksi = new Transaksi();
+        $transaksi->barang_id = $request->barang_id;
+        $transaksi->jumlah = $request->jumlah;
+        $transaksi->total = $request->total;
+        $transaksi->save();
+
+
+        return redirect()->route('admin.transaksi')->with('msg', 'Pengaduan Berhasil Dikirim');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    function edit($id)
     {
-        $data = Barang::all();
-        return view('admin.transaksi.create', [
-            'data' => $data
+        $transaksi = Transaksi::findOrFail($id);
+        return view('admin.transaksi.edit', ['transaksi' => $transaksi]);
+    }
+
+
+    public function update(Request $request, $id)
+    {
+        $validated = $request->validate([
+            'jumlah' => 'required|numeric|min:1',
+            'total' => 'required|numeric|min:0',
         ]);
+
+        $transaksi = Transaksi::find($id);
+        if (!$transaksi) {
+            return redirect()->back()->with('status', 'Transaksi tidak ditemukan.');
+        }
+
+        $transaksi->jumlah = $validated['jumlah'];
+        $transaksi->total = $validated['total'];
+        $transaksi->save();
+
+        return redirect()->route('admin.transaksi')->with('status', 'Transaksi berhasil diperbarui.');
     }
-
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
+    function destroy($id)
     {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function inputBarang(Request $request)
-    {
-        $data = $request->all();
-
-        Barang::create($data);
-        return view('admin.transaksi.create');
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function showInput(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+        $transaksi = Transaksi::findOrFail($id);
+        $transaksi->delete();
+        return redirect()->route('admin.transaksi');
     }
 }

@@ -17,8 +17,8 @@
                     @enderror
                   </div>
                   <div class="mb-3">
-                    <label for="name" class="form-label">Barang</label>
-                    <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" value="{{old('name')}}" placeholder="Masukkan Barang ..." id="name"required>
+                    <label for="barang" class="form-label">Barang</label>
+                    <input type="text" name="barang" class="form-control @error('barang') is-invalid @enderror" value="{{old('barang')}}" placeholder="Masukkan Barang ..." id="barang"required>
                     @error('name')
                         <div class="invalid-feedback">{{$message}}</div>
                     @enderror

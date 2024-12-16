@@ -3,37 +3,58 @@
 <div class="container-fluid">
     <div class="card">
       <div class="card-body">
-        <h5 class="card-title">Form Data Users</h5>
+        <h5 class="card-title text-center text-uppercase tracking-wide">Form Users</h5>
         <div class="table-responsive">
-          <button class="btn btn-primary m-1" type="button"><a class="text-white " href="{{route('admin.users.create')}}">Create</a></button>
+          <button class="btn btn-primary m-1" type="button"><a class="text-white " href="{{route('admin.users.create')}}"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-folder-plus">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path d="M12 19h-7a2 2 0 0 1 -2 -2v-11a2 2 0 0 1 2 -2h4l3 3h7a2 2 0 0 1 2 2v3.5" />
+            <path d="M16 19h6" />
+            <path d="M19 16v6" />
+          </svg></a></button>
           <table class="table text-nowrap align-middle mb-0">
             <thead>
-                <tr>
-                    <th>No.</th>
-                    <th>Name</th>
-                    <th>email</th>
-                    <th>Img</th>
-                    <th>Role</th>
-                    <th>alamat</th>
-                    <th>Telp</th>
-                    <th>Tanggal Lahir</th>
-                    <th>Action</th>
+                <tr class="text-center">
+                    <th class="text-capitalize tracking-wide">No.</th>
+                    <th class="text-capitalize tracking-wide">Name</th>
+                    <th class="text-capitalize tracking-wide">email</th>
+                    <th class="text-capitalize tracking-wide">Role</th>
+                    <th class="text-capitalize tracking-wide">alamat</th>
+                    <th class="text-capitalize tracking-wide">Telp</th>
+                    <th class="text-capitalize tracking-wide">Tanggal Lahir</th>
+                    <th class="text-capitalize tracking-wide">Action</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($data as $value)
-                <tr>
-                    <td>{{$loop->iteration}}</td>
+                <tr class="text-center">
+                    <td>{{$loop->iteration}} .</td>]
                     <td>{{$value->name}}</td>
                     <td>{{$value->email}}</td>
-                    <td>tyui</td>
                     <td>{{$value->role}}</td>
                     <td>{{$value->alamat}}</td>
                     <td>{{$value->telp}}</td>
                     <td>{{$value->tgl_lahir}}</td>
                     <td>
-                      <button class="btn btn-warning" href="">Edit</button>
-                      <button class="btn btn-danger" href="{{route('admin.users.delete',$value->id)}}">Delete</button>
+                      <form method="POST" action="{{route('admin.users.destroy', $value->id )}}">
+                        @csrf  
+                      <a href="{{route('admin.users.edit', $value->id )}}"" type="button" class="btn btn-sm btn-warning">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-edit">
+                          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                          <path d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1" />
+                          <path d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z" />
+                          <path d="M16 5l3 3" />
+                        </svg>
+                      </a>
+                      
+                        <button type="submit" class="btn btn-sm btn-danger"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-trash">
+                          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                          <path d="M4 7l16 0" />
+                          <path d="M10 11l0 6" />
+                          <path d="M14 11l0 6" />
+                          <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
+                          <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
+                        </svg></button>
+                      </form>
                     </td>
                 </tr>
               @endforeach
@@ -48,4 +69,50 @@
           class="pe-1 text-primary text-decoration-underline">ThemeWagon</a></p>
     </div>
 </div>
+@endsection
+
+@section('script')
+    <script>
+
+// Fungsi untuk mengisi data ke dalam modal
+function populateModal(user) {
+  document.getElementById("name").value = user.name;
+  document.getElementById("password").value = user.password;
+  document.getElementById("email").value = user.email;
+  document.getElementById("img").value = user.img;
+  document.getElementById("role").value = user.role;
+  document.getElementById("alamat").value = user.alamat;
+  document.getElementById("telp").value = user.telp;
+  document.getElementById("tgl_lahir").value = user.tgl_lahir;
+  document.getElementById("status").value = user.status;
+  document.getElementById("jabatan_id").value = user.jabatan_id;
+}
+
+// Simulasi membuka modal dengan data user
+document.querySelector('[data-bs-target="#editUserModal"]').addEventListener("click", () => {
+  populateModal(userData);
+});
+
+// Fungsi untuk menyimpan data
+function saveUser() {
+  const name = document.getElementById("name").value;
+  const password = document.getElementById("password").value;
+  const email = document.getElementById("email").value;
+  const img = document.getElementById("img").value;
+  const role = document.getElementById("role").value;
+  const alamat = document.getElementById("alamat").value;
+  const telp = document.getElementById("telp").value;
+  const tgl_lahir = document.getElementById("tgl_lahir").value;
+  const status = document.getElementById("status").value;
+  const jabatan_id = document.getElementById("jabatan_id").value;
+
+  console.log("Data tersimpan:");
+  console.log({ name, password, email, img,role,alamat,telp,tgl_lahir,status,jabatan_id });
+
+  // Tutup modal setelah menyimpan
+  const modal = bootstrap.Modal.getInstance(document.getElementById("editUserModal"));
+  modal.hide();
+}
+
+    </script>
 @endsection

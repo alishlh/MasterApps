@@ -12,7 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->increments('id')->autoIncrement()->change();
+            $table->integer('jabatan_id')->unsigned()->nullable();
+            $table->foreign('jabatan_id')->on('jabatans')->references('id')->onDelete('cascade');
         });
     }
 
@@ -22,7 +23,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            //
+            $table->dropColumn('jabatan_id');
         });
     }
 };

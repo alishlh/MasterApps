@@ -31,7 +31,7 @@ class HomeController extends Controller
         } elseif (Auth::user()->role == 'supplier') {
             return redirect()->route('supplier.index');
         } elseif (Auth::user()->role == 'pegawai') {
-            return redirect()->route('pegawai.index');
+            return redirect()->route('pegawai.dashboard');
         }
     }
 }

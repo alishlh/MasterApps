@@ -4,15 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Transaksi extends Model
+class transaksi extends Model
 {
-    protected $table = 'transaksi';
-    protected $fillable =  [
-        'barang_id',
-        'tgl_transaksi',
-        'jumlah',
-        'total_harga'
-    ];
+    protected $fillable = ['barang_id', 'jumlah', 'total'];
 
     function barang()
     {

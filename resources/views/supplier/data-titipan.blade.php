@@ -4,65 +4,50 @@
 <div class="container-fluid">
     <div class="card">
       <div class="card-body">
-        <h5 class="card-title text-center mb-3">Form Data Barang</h5> 
+        <h5 class="card-title text-center text-uppercase tracking-wide mb-3">Form Barang</h5> 
         <div class="table-responsive">
           <table class="table text-nowrap align-middle mb-0">
             <thead>
-                <tr>
+                <tr class="text-center">
                   <th>No.</th>
                   <th>Barang</th>
                   <th>Jumlah</th>
-                  <th>satuan</th>
                   <th>Harga Total</th>
-                  <th>Action</th>
+                  <th>Harga Total</th>
                 </tr>
             </thead>
             <tbody>
                @foreach ($data as $value)
                    @csrf
-                   <tr>
-                     <td>{{$loop->iteration}}</td>
+                   <tr class="text-center">
+                     <td>{{$loop->iteration}} .</td>
                      <td>{{$value->barang}}</td>
-                     <td>{{$value->jumlah}}</td>
-                     <td>{{$value->satuan}}</td>
-                     <td>{{$value->total_harga}}</td>
+                     <td>{{$value->jumlah}} {{$value->satuan}}</td>
+                     <td>Rp. {{$value->total_harga}}</td>
                      <td>
-                       <a href="" class="btn btn-secondary">Tambahkan</a>
-                       <div class="btn btn-primary" href="{{route('supplier.detail',$value->id)}}" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        Detail
-                      </div>
+                       
+                      <form method="POST" action="{{route('supplier.barang.delete',$value->id)}}">
+                        @csrf
+                        <button class="btn btn-sm btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus barang ini?')"
+                        type="submit" href=""><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-trash">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <path d="M4 7l16 0" />
+                        <path d="M10 11l0 6" />
+                        <path d="M14 11l0 6" />
+                        <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
+                        <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
+                        </svg></button>
+                        <a href="{{route('supplier.edit', $value->id)}}" type="button" class="btn btn-sm btn-warning" >
+                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-edit">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <path d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1" />
+                            <path d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z" />
+                            <path d="M16 5l3 3" />
+                          </svg>
+                        </a>
+                        
+                      </form>
                       
-                      <div class="modal" id="exampleModal" tabindex="-1">
-                        <div class="modal-dialog modal-sm" role="document">
-                          <div class="modal-content">
-                            <button type="button" class="btn-close w-5 pl-5" data-bs-dismiss="modal" aria-label="Close"></button>
-                            <div class="modal-status bg-success"></div>
-                            <div class="modal-body text-center text-success py-10">
-                              <svg xmlns="http://www.w3.org/2000/svg" class="icon mb-2 text-green icon-lg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                <circle cx="12" cy="12" r="9" />
-                                <path d="M9 12l2 2l4 -4" />
-                              </svg>
-                              <h3 class="text-primary">Detail</h3>
-                            </div>
-                            <div class="modal-footer">
-                              <div class="w-100 flex">
-                                <div class="flex">
-                                  <p>Supplier : <span class="text-muted">{{$value->user->name}}</span></p> 
-                                  <p>Barang : <span class="text-muted">{{$value->barang}}</span></p> 
-                                  <p>Jumlah : <span class="text-muted">{{$value->jumlah}}</span> </p> 
-                                  <p>Satuan : <span class="text-muted">{{$value->satuan}}</span></p> 
-                                  <p>Harga : <span class="text-muted">{{$value->total_harga}}</span></p> 
-                  
-                                </div>
-                              
-                                  <button type="button" class="btn me-auto" data-bs-dismiss="modal">Close</button>
-                              
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
                     </td>
                    </tr>
                @endforeach
